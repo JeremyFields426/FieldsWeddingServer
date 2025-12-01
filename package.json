@@ -25,9 +25,7 @@
 		"glob": "^7.2.0",
 		"pg": "^8.7.3",
 		"typescript": "^5.9.3",
-		"uuid": "^8.3.2"
-	},
-	"devDependencies": {
+		"uuid": "^8.3.2",
 		"@types/cors": "^2.8.12",
 		"@types/crypto-js": "^4.1.1",
 		"@types/dotenv": "^8.2.0",
