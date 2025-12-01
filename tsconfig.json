@@ -1,0 +1,24 @@
+{
+	"compilerOptions": {
+		"module": "ESNext",
+		"target": "ESNext",
+		"outDir": "public",
+		"moduleResolution": "node",
+		"allowJs": true,
+		"skipLibCheck": true,
+		"esModuleInterop": true,
+		"allowSyntheticDefaultImports": true,
+		"strict": true,
+		"forceConsistentCasingInFileNames": true,
+		"noFallthroughCasesInSwitch": true,
+		"resolveJsonModule": true,
+		"isolatedModules": true,
+		"noImplicitOverride": true
+	},
+	"include": [
+		"./src/**/*.ts",
+		"src/scripts/Backup.js",
+		"src/scripts/Backup.js",
+		"src/scripts/BackupDatabase.js"
+	]
+}

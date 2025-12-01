@@ -1,0 +1,20 @@
+# dependencies
+/node_modules
+
+# production
+/build
+/public
+
+
+# misc
+.DS_Store
+/src/scripts/processes.txt
+/src/database/backups
+*.log
+
+# vars
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
