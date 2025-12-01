@@ -1,11 +1,11 @@
 {
-	"name": "the-mermaids-purses-server",
+	"name": "wedding-website-server",
 	"version": "1.0.0",
 	"description": "",
 	"main": "index.js",
 	"type": "module",
 	"scripts": {
-		"run": "bash ./src/scripts/start.sh",
+		"start": "bash ./src/scripts/start.sh",
 		"serve": "bash ./src/scripts/start.sh",
 		"dev": "nodemon -e ts --exec \"bash ./src/scripts/dev.sh \"",
 		"view": "bash ./src/scripts/view.sh",
