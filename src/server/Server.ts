@@ -9,6 +9,7 @@ import { RSVPAPI } from "../api/RSVPAPI.js";
 import { APIKeyChecker } from "./APIKeyChecker.js";
 import { Logger } from "../logs/Logger.js";
 import { PhotoAPI } from "../api/PhotoAPI.js";
+import { HealthAPI } from "../api/HealthAPI.js";
 
 dotenv.config({ path: `${process.cwd()}/.env` });
 
@@ -88,6 +89,7 @@ export class App {
 
 		this.m_App.use(new RSVPAPI(this.m_Database).Router);
 		this.m_App.use(new PhotoAPI(this.m_Database).Router);
+		this.m_App.use(new HealthAPI(this.m_Database).Router);
 	}
 
 	private Listen() {
@@ -113,7 +115,7 @@ export class App {
 
 			try {
 				const { data } = await axios.get(
-					`https://fieldssoftwareserver.com/ping`,
+					`https://localhost/ping`,
 					{
 						headers: App.HEADERS,
 					}
