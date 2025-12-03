@@ -44,8 +44,6 @@ export class App {
 			throw new Error("The Server API Key is not defined.");
 		}
 
-		this.BeginHealthCheck();
-
 		process.on("uncaughtException", (error) => {
 			Logger.Error(`Express experienced an UNCAUGHT and UNHANDLED ${error}`);
 		});
@@ -96,54 +94,5 @@ export class App {
 		this.m_Http = this.m_App.listen(App.PORT, () => {
 			Logger.Info(`The Server is listening on port ${App.PORT}.`);
 		});
-	}
-
-	private BeginHealthCheck() {
-		const nLogTime = 1 * 60 * 1000;
-		const nMinutesPerHealthCheck = 5;
-
-		let nUptime = 0;
-
-		setInterval(async () => {
-			nUptime++;
-
-			Logger.Info(`The server has been up for ${nUptime} minutes.`);
-
-			if (nUptime % nMinutesPerHealthCheck != 0) {
-				return;
-			}
-
-			try {
-				const { data } = await axios.get(
-					`https://localhost/ping`,
-					{
-						headers: App.HEADERS,
-					}
-				);
-
-				Logger.Info(
-					`The health check with the server SUCCEEDED! Received '${data}.'`
-				);
-			} catch (exception) {
-				Logger.Error(`Server ${exception}`);
-				Logger.Error(
-					"The health check with the express server FAILED! Restarting..."
-				);
-
-				if (this.m_Http) {
-					if (this.m_Http.listening) {
-						Logger.Error(
-							"The health check FAILED, but the HTTP server still says that it is LISTENING?"
-						);
-					}
-
-					this.m_Http.close(() => {
-						this.Start();
-					});
-				} else {
-					this.Start();
-				}
-			}
-		}, nLogTime);
 	}
 }
