@@ -6,7 +6,7 @@ interface FetchPhotoRequest {
 }
 
 interface PostPhotoRequest {
-    photo: PhotoDetails;
+    photos: PhotoDetails[];
 }
 
 interface DeletePhotoRequest {
@@ -26,7 +26,9 @@ export class PhotoAPI extends Route {
 	}
 
     protected override async Post(req: PostPhotoRequest) {
-        await this.CreatePhoto(req.photo);
+        for (const photo of req.photos) {
+            await this.CreatePhoto(photo);
+        }
 
         return {
             status: 200,
